@@ -1039,8 +1039,8 @@ ul.about {
     border-style: solid;
     text-align: center;
     font-size: 24px;
-    float: center;
-    display: block;
+    float: none;
+    display: inline-block;
     color : #fff;
     -webkit-transition: all .3s ease-in;
     -moz-transition: all .3s ease-in;
