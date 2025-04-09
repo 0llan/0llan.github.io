@@ -1029,6 +1029,12 @@ ul.about {
     padding-top: 15px;
 }
 
+#profile_social {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
 #profile_social a{
     width: 45px;
     height: 45px;
