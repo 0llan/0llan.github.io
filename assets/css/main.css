@@ -1039,7 +1039,7 @@ ul.about {
     border-style: solid;
     text-align: center;
     font-size: 24px;
-    float: left;
+    float: center;
     display: block;
     color : #fff;
     -webkit-transition: all .3s ease-in;
