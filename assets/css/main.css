@@ -68,6 +68,22 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 300;
 }
 
+.donut-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.donut-center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  color: #333;
+  pointer-events: none;
+}
+
 .wrapper {
     display: block;
     width: 100%;
