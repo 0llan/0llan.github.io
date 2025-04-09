@@ -17,11 +17,11 @@
         <!-- .dounut chart -->
         <div style="display: flex; align-items: center; gap: 10px;">
             <div class="donut-wrapper">
-                <canvas id="modellingChart" width="180" height="180"></canvas>
+                <canvas id="modellingChart1" width="180" height="180"></canvas>
                 <div class="donut-center-icon"><i class="fa-solid fa-cubes"></i></div>
                 <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    const ctx = document.getElementById("modellingChart")?.getContext("2d");
+                    const ctx = document.getElementById("modellingChart1")?.getContext("2d");
                     if (!ctx) return;
                     new Chart(ctx, {
                         type: "doughnut",
@@ -53,6 +53,55 @@
                 <li><span style="color: #FFA726;">●</span> Fusion 360</li>
             </ul>
         </div>
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">3D Modelling</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart2" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-cubes"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart2")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Blender", "Unity", "Fusion 360", "Verilog HDL"],
+                            datasets: [{
+                                data: [40, 30, 20, 10],
+                                backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726", "#FFA726"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #42A5F5;">●</span> C#</li>
+                <li><span style="color: #66BB6A;">●</span> Python</li>
+                <li><span style="color: #FFA726;">●</span> C++</li>
+                <li><span style="color: #FFA726;">●</span> Verilog HDL</li>
+            </ul>
+        </div>
+        
+        
         
         <!-- .title_content -->
         <div class="title_content" style="float: none;">
