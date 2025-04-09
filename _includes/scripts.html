@@ -94,7 +94,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const ctx = document.getElementById("modellingChart")?.getContext("2d");
-    if (!ctx) return; // 캔버스가 없는 페이지에서는 실행되지 않도록
+    if (!ctx) return;
 
     new Chart(ctx, {
         type: "doughnut",

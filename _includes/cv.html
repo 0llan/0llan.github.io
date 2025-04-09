@@ -15,13 +15,36 @@
         </div>
         
         <!-- .dounut chart -->
-        <div style="display: flex; align-items: center; gap: 50px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
             <div class="donut-wrapper">
-              <canvas id="modellingChart" width="200" height="200"></canvas>
-              <div class="donut-center-icon">🎨</div>
+                <canvas id="modellingChart" width="180" height="180"></canvas>
+                <div class="donut-center-icon">🎨</div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Blender", "Unity", "Fusion 360"],
+                            datasets: [{
+                                data: [40, 30, 30],
+                                backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726"],
+                                borderWidth: 5,
+                                hoverOffset: 10
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: true
+                        }
+                    });
+                });
+                </script>
             </div>
-            
-            
             
             <!-- .legends -->
             <ul style="list-style: none; padding: 0; font-size: 14px;">
