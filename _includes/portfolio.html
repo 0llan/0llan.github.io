@@ -20,51 +20,55 @@
 
         <!-- #portfoliolist -->
         <div id="portfoliolist">
-
-                <script>
-                  const galleries = {
-                    'gallery-contest': [
-                      'images/portfolio/1.jpg',
-                      'images/portfolio/2.jpg',
-                      'images/portfolio/3.jpg'
-                    ]
-                  };
-
-                  function openGalleryModal(galleryId) {
-                    const container = document.getElementById('galleryContainer');
-                    container.innerHTML = '';
-
-                    galleries[galleryId].forEach(src => {
-                      const img = document.createElement('img');
-                      img.src = src;
-                      img.style.width = '100%';
-                      img.style.marginBottom = '10px';
-                      container.appendChild(img);
-                    });
-
-                    document.getElementById('galleryModal').style.display = 'block';
-                  }
-
-                  function closeGalleryModal() {
-                    document.getElementById('galleryModal').style.display = 'none';
-                  }
-                </script>
             
             <!-- .portfolio -->
-            <div class="portfolio catContest" data-cat="catContest">	
+            <div class="portfolio logo" data-cat="logo">	
                 <!-- .portfolio-wrapper -->
                 <div class="portfolio-wrapper">		
-                    <a href="images/portfolio/1.jpg" onclick="openGalleryModal('gallery-contest'); return false;">
-                        <img src="images/portfolio/1.jpg" />
-                        <div class="label">
-                            <div class="label-text">
-                                <a class="text-title">DTaQ Contest</a>
-                                <span class="text-category">Contest Project</span>
+
+                    <!-- Carousel 시작 -->
+                    <div id="portfolio-carousel-1" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#portfolio-carousel-1" data-slide-to="0" class="active"></li>
+                            <li data-target="#portfolio-carousel-1" data-slide-to="1"></li>
+                            <li data-target="#portfolio-carousel-1" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="images/portfolio/1.jpg" alt="Project Image 1" />
+                                <div class="carousel-caption">
+                                    <h4>Project 1</h4>
+                                    <p>Project 1 설명</p>
+                                </div>
                             </div>
-                            <div class="label-bg"></div>
+
+                            <div class="item">
+                                <img src="images/portfolio/2.jpg" alt="Project Image 2" />
+                                <div class="carousel-caption">
+                                    <h4>Project 2</h4>
+                                    <p>Project 2 설명</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="images/portfolio/3.jpg" alt="Project Image 3" />
+                                <div class="carousel-caption">
+                                    <h4>Project 3</h4>
+                                    <p>Project 3 설명</p>
+                                </div>
+                            </div>
                         </div>
-                        
-                    </a>
+
+                        <a class="left carousel-control" href="#portfolio-carousel-1" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#portfolio-carousel-1" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                    <!-- Carousel 끝 -->
+
                 </div>
                 <!-- /.portfolio-wrapper -->
             </div>		
