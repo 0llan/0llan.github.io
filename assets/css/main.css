@@ -1878,6 +1878,25 @@ ul.info-post li {
     border-radius: 50px;
 }
 
+.blog-article .post_media img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.blog-article .post-meta {
+  margin: 10px 0;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.blog-article .text_content a {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  color: #2a2a2a;
+}
+
 
 #blog .post_comments .comment{
     background: rgba(100, 100, 100, 0.1);
