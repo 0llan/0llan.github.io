@@ -33,12 +33,34 @@
     margin-right: 0 !important; 
 }
 
-.modal-content .scrollable {
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999;
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  margin: 5vh auto;
+  padding: 20px;
+  width: 90%;
   max-height: 90vh;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.scrollable {
+  max-height: 80vh;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+}
+
+.scrollable img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
 }
 
 #custumize-style {
