@@ -21,11 +21,40 @@
         <!-- #portfoliolist -->
         <div id="portfoliolist">
 
+                <script>
+                  const galleries = {
+                    'gallery-contest': [
+                      'images/portfolio/1.jpg',
+                      'images/portfolio/2.jpg',
+                      'images/portfolio/3.jpg'
+                    ]
+                  };
+
+                  function openGalleryModal(galleryId) {
+                    const container = document.getElementById('galleryContainer');
+                    container.innerHTML = '';
+
+                    galleries[galleryId].forEach(src => {
+                      const img = document.createElement('img');
+                      img.src = src;
+                      img.style.width = '100%';
+                      img.style.marginBottom = '10px';
+                      container.appendChild(img);
+                    });
+
+                    document.getElementById('galleryModal').style.display = 'block';
+                  }
+
+                  function closeGalleryModal() {
+                    document.getElementById('galleryModal').style.display = 'none';
+                  }
+                </script>
+            
             <!-- .portfolio -->
             <div class="portfolio catContest" data-cat="catContest">	
                 <!-- .portfolio-wrapper -->
                 <div class="portfolio-wrapper">		
-                    <a href="images/portfolio/1.jpg" onclick="openGalleryModal('gallery-contest'); return false;" title="Project for IMUGI">
+                    <a href="images/portfolio/1.jpg" onclick="openGalleryModal('gallery-contest'); return false;">
                         <img src="images/portfolio/1.jpg" />
                         <div class="label">
                             <div class="label-text">
@@ -280,37 +309,6 @@
         <!-- #portfoliolist -->
     </div>
     <!-- /.container-portfolio -->
-    
-    
-    <script>
-      const galleries = {
-        'gallery-contest': [
-          'images/portfolio/1.jpg',
-          'images/portfolio/2.jpg',
-          'images/portfolio/3.jpg'
-        ]
-      };
-
-      function openGalleryModal(galleryId) {
-        const container = document.getElementById('galleryContainer');
-        container.innerHTML = '';
-
-        galleries[galleryId].forEach(src => {
-          const img = document.createElement('img');
-          img.src = src;
-          img.style.width = '100%';
-          img.style.marginBottom = '10px';
-          container.appendChild(img);
-        });
-
-        document.getElementById('galleryModal').style.display = 'block';
-      }
-
-      function closeGalleryModal() {
-        document.getElementById('galleryModal').style.display = 'none';
-      }
-    </script>
-    
     
 </div>
 <!-- End .portfolio -->
