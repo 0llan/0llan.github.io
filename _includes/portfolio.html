@@ -26,9 +26,19 @@
                 <!-- .portfolio-wrapper -->
                 <div class="portfolio-wrapper">		
                     <a href="images/portfolio/1.jpg" rel="portfolio" title="Project for IMUGI">
-                        <img src="images/portfolio/3.jpg" />
-                        <img src="images/portfolio/2.jpg" />
-                        <img src="images/portfolio/1.jpg" />
+                        <!--<img src="images/portfolio/1.jpg" />-->
+                        <a href="#" onclick="openGalleryModal()"></a>
+                        <div id="galleryModal" class="modal">
+                          <div class="modal-content">
+                            <span onclick="closeGalleryModal()" class="close">&times;</span>
+                            <div class="scrollable">
+                              <img src="img1.jpg">
+                              <img src="img2.jpg">
+                              <img src="img3.jpg">
+                            </div>
+                          </div>
+                        </div>
+                        
                         <div class="label">
                             <div class="label-text">
                                 <a class="text-title">DTaQ Contest</a>
@@ -36,6 +46,7 @@
                             </div>
                             <div class="label-bg"></div>
                         </div>
+                        
                     </a>
                 </div>
                 <!-- /.portfolio-wrapper -->

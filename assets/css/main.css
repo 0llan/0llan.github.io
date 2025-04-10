@@ -33,6 +33,14 @@
     margin-right: 0 !important; 
 }
 
+.modal-content .scrollable {
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 #custumize-style {
     display: none;
 }

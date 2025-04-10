@@ -90,33 +90,6 @@
     }
 
 </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById("modellingChart")?.getContext("2d");
-    if (!ctx) return;
-
-    new Chart(ctx, {
-        type: "doughnut",
-        data: {
-            labels: ["Blender", "Unity", "Fusion 360"],
-            datasets: [{
-                data: [40, 30, 30],
-                backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726"],
-                borderWidth: 2,
-                hoverOffset: 10
-            }]
-        },
-        options: {
-            plugins: {
-                legend: { display: false }
-            },
-            cutout: "60%",
-            responsive: false
-        }
-    });
-});
-</script>
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
