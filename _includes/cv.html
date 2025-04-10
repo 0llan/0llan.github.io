@@ -200,55 +200,7 @@
                 <li><span style="color: #A1C4E7;">●</span> Atmel Studio</li>
             </ul>
         </div>
-        
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Language</div>
-            <div class="clear"></div>
-        </div>
-        
-        <!-- .dounut chart -->
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="donut-wrapper">
-                <canvas id="modellingChart5" width="180" height="180"></canvas>
-                <div class="donut-center-icon"><i class="fa-solid fa-language"></i></div>
-                <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const ctx = document.getElementById("modellingChart5")?.getContext("2d");
-                    if (!ctx) return;
-                    new Chart(ctx, {
-                        type: "doughnut",
-                        data: {
-                            labels: ["Korean", "English"],
-                            datasets: [{
-                                data: [80, 20],
-                                backgroundColor: ["#2E74B5", "#C8102E"],
-                                borderWidth: 2,
-                                hoverOffset: 4
-                            }]
-                        },
-                        options: {
-                            plugins: {
-                                legend: { display: false }
-                            },
-                            cutout: "60%",
-                            responsive: false
-                        }
-                    });
-                });
-                </script>
-            </div>
-            
-            <!-- .legends -->
-            <ul style="list-style: none; padding: 0; font-size: 14px;">
-                <li><span style="color: #2E74B5;">●</span> Korean</li>
-                <li><span style="color: #C8102E;">●</span> English</li>
-            </ul>
-        </div>
-        
-        
+         
         
         <!-- .title_content -->
         <div class="title_content" style="float: none;">
@@ -306,12 +258,6 @@
         </div>
         <!-- /.title_content -->
         
-        <!-- .download_resume -->
-        <a class="download" style="margin:0;float: left;" href="#">
-            <span data-hover="Download My Resume"><i class="glyphicon glyphicon-download-alt"></i> Download My Resume</span>
-        </a>
-        <!-- /.download_resume -->
-
     </div>
      <!-- /.resume-right -->
      
@@ -399,6 +345,11 @@
         <!-- /.attributes -->
         <br>  
         
+        <!-- .download_resume -->
+        <a class="download" style="margin:0;float: left;" href="#">
+            <span data-hover="Download My Resume"><i class="glyphicon glyphicon-download-alt"></i> Download My Resume</span>
+        </a>
+        <!-- /.download_resume -->
     </div>
     <!-- /.resume-left -->
 </div>
@@ -406,37 +357,5 @@
 <div style="clear: both"></div>  
   
   
-<!-- client reference -->
-<div class="row">
-<div class="col-md-12">   
-    
-<div class="reference clearfix"> 
-            
-         <!-- .title_content -->
-        <div class="title_content" style="margin-bottom:5px">
-            <div class="text_content">Gallery</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-
-        <ul>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-            </li>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-            </li>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-            </li>
-        </ul>
-</div>
-</div>
-
-     
-<div style="clear: both"></div>   
-</div>
-
 </div>
 <!-- End .resume -->
