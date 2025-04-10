@@ -1878,23 +1878,30 @@ ul.info-post li {
     border-radius: 50px;
 }
 
-.blog-article .post_media img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+
+.paper-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.paper-entry img {
+  max-width: 180px;
   border-radius: 6px;
 }
 
-.blog-article .post-meta {
-  margin: 10px 0;
-  color: #666;
-  font-size: 0.95em;
+.paper-title {
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
-.blog-article .text_content a {
-  font-size: 1.2em;
-  line-height: 1.4em;
-  color: #2a2a2a;
+.paper-authors, .paper-conference, .paper-summary {
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.paper-award {
+  color: #f39c12;
 }
 
 
