@@ -1,0 +1,366 @@
+<!-- .resume -->
+<div id="resume" class="content_2">
+    <!-- .title -->
+<h1 class="h-bloc">Personal Information</h1> 
+
+<div class="row">
+
+   <!-- .resume-right -->
+    <div class="col-md-6">
+
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">3D Modelling</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart1" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-cubes"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart1")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Blender", "Unity", "Fusion 360"],
+                            datasets: [{
+                                data: [40, 30, 30],
+                                backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #42A5F5;">●</span> Blender</li>
+                <li><span style="color: #66BB6A;">●</span> Unity</li>
+                <li><span style="color: #FFA726;">●</span> Fusion 360</li>
+            </ul>
+        </div>
+        
+        
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Coding</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart2" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart2")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["C#", "Python", "C++", "Verilog HDL"],
+                            datasets: [{
+                                data: [40, 30, 20, 10],
+                                backgroundColor: ["#b89dbf", "#FFD43B", "#0091ff", "#B52C2C"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #b89dbf;">●</span> C#</li>
+                <li><span style="color: #FFD43B;">●</span> Python</li>
+                <li><span style="color: #0091ff;">●</span> C++</li>
+                <li><span style="color: #B52C2C;">●</span> Verilog HDL</li>
+            </ul>
+        </div>
+        
+        
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Schematic Capturing</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart3" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-microchip"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart3")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["KiCad", "OrCAD", "Virtuosso"],
+                            datasets: [{
+                                data: [70, 20, 10],
+                                backgroundColor: ["#2E74B5", "#C8102E", "#4B0082"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #2E74B5;">●</span> KiCad</li>
+                <li><span style="color: #C8102E;">●</span> OrCAD</li>
+                <li><span style="color: #4B0082;">●</span> Virtuosso</li>
+            </ul>
+        </div>
+        
+        
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Configuring</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart4" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-object-group"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart4")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Visual Studio", "Arduino IDE", "Mission Planner", "Betaflight", "Atmel Studio"],
+                            datasets: [{
+                                data: [30, 30, 20, 10, 10],
+                                backgroundColor: ["#5C2D91", "#00979D", "#1E88E5", "#FEC20C", "#A1C4E7"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #5C2D91;">●</span> Visual Studio</li>
+                <li><span style="color: #00979D;">●</span> Arduino IDE</li>
+                <li><span style="color: #1E88E5;">●</span> Mission Planner</li>
+                <li><span style="color: #FEC20C;">●</span> Betaflight</li>
+                <li><span style="color: #A1C4E7;">●</span> Atmel Studio</li>
+            </ul>
+        </div>
+         
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Hobbies</div>
+            <div class="clear"></div>
+        </div>
+        
+        <!-- .dounut chart -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="donut-wrapper">
+                <canvas id="modellingChart6" width="180" height="180"></canvas>
+                <div class="donut-center-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById("modellingChart6")?.getContext("2d");
+                    if (!ctx) return;
+                    new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ["Drone Maneuver", "Worldbuilding", "Note Compose", "In-game level design"],
+                            datasets: [{
+                                data: [60, 20, 10, 10],
+                                backgroundColor: ["#4DD0E1", "#BA68C8", "#FFD54F", "#FFB74D"],
+                                borderWidth: 2,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            cutout: "60%",
+                            responsive: false
+                        }
+                    });
+                });
+                </script>
+            </div>
+            
+            <!-- .legends -->
+            <ul style="list-style: none; padding: 0; font-size: 14px;">
+                <li><span style="color: #4DD0E1;">●</span> Drone Maneuver</li>
+                <li><span style="color: #BA68C8;">●</span> Worldbuilding</li>
+                <li><span style="color: #FFD54F;">●</span> Note Compose</li>
+                <li><span style="color: #FFB74D;">●</span> In-game level design</li>
+            </ul>
+        </div>
+        
+    </div>
+     <!-- /.resume-right -->
+     
+     
+     
+     <!-- .resume-left -->
+    <div class="col-md-6 resume-left">    
+        <!-- .title_content -->
+        <div class="title_content" style="margin-bottom:5px">
+            <div class="text_content">Experience</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <!-- .attributes -->
+        <ul class="attributes">
+            <li class="first">
+                <h5>Co-operative Internship <span class="duration"><i class="fa fa-calendar color"></i> 2023 - 2023</span></h5>
+                <h6><span class="fa fa-briefcase"></span> Space &amp; Bean Co., Ltd.</h6>
+                <p>Drone Software development and testing</p>
+            </li>
+            <li>
+                <h5>Military Service <span class="duration"><i class="fa fa-calendar color"></i> 2020 - 2022</span></h5>
+                <h6><span class="fa fa-briefcase"></span> Republic of Korea Airforce</h6>
+                <p>Air Force Operational Support Staff</p>
+            </li>
+            <li>
+                <h5>Research Intern <span class="duration"><i class="fa fa-calendar color"></i> 2019 - 2019</span></h5>
+                <h6><span class="fa fa-briefcase"></span> Electronic Circuit Design Lab, SeoulTech</h6>
+                <p>Undergraduate research assistant</p>
+            </li>
+
+        </ul>
+        <!-- /.attributes -->
+        <br>
+        
+        <!-- .title_content -->
+        <div class="title_content">
+            <div class="text_content">Education</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <!-- .attributes -->
+        <ul class="attributes">
+            <li class="first">
+                <h5>M.S. <span class="duration"><i class="fa fa-calendar color"></i> 2024 -</span></h5>
+                <h6><span class="fa fa-book"></span> Gwangju Institute of Science and Technology </h6>
+                <h6>Intelligent Robotics </h6>
+                <p>Advisor: SeungJun Kim</p>
+            </li>
+            <li>
+                <h5>B.S. <span class="duration"><i class="fa fa-calendar color"></i> 2018 - 2024</span></h5>
+                <h6><span class="fa fa-book"></span> Seoul National University of Science and Technology</h6>
+                <h6>Electronic and IT Media Engineering </h6>
+                <p>Advisor: Junho Lee</p>
+                <p>Cum Laude</p>
+            </li>
+        </ul>
+        <!-- /.attributes -->
+        <br>  
+        
+        
+          <!-- .title_content -->
+        <div class="title_content">
+            <div class="text_content">Awards</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <!-- .attributes -->
+        <ul class="attributes">
+            <li class="first">
+                <h5>4th I4FT Industry-Academia Project Presentation <span class="duration"><i class="fa fa-calendar color"></i> 2025</span></h5>
+                <h6>Inter-university Alliance for Future Vehicular Technology (I4FT)</h6>
+                <p><span class="fa fa-trophy"></span> Excellence prize</p>
+            </li>
+            <li>
+                <h5>Internal Capstone Design Contest<span class="duration"><i class="fa fa-calendar color"></i> 2024</span></h5>
+                <h6>Seoul National University of Science and Technology (SeoulTech) </h6>
+                <p> Department of Electronic Engineering</p>
+                <p><span class="fa fa-trophy"></span> Excellence prize</p>
+            </li>
+            <li>
+                <h5>Defense Science and Technology Fair <span class="duration"><i class="fa fa-calendar color"></i> 2018</span></h5>
+                <h6>Defense Agency for Technology and Quality (DTaQ) </h6>
+                <p> Defense Venture Idea Contest</p>
+                <p><span class="fa fa-trophy"></span> Top prize (1st)</p>
+            </li>
+  
+        </ul>
+        <!-- /.attributes -->
+        <br>  
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">My Resume</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <!-- .download_resume -->
+        <a class="download" style="margin:0;float: left;" href="#">
+            <span data-hover="Download My Resume"><i class="glyphicon glyphicon-download-alt"></i> Download My Resume</span>
+        </a>
+        <!-- /.download_resume -->
+    </div>
+    <!-- /.resume-left -->
+</div>
+
+<div style="clear: both"></div>  
+  
+  
+</div>
+<!-- End .resume -->
