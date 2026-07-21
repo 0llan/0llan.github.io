@@ -1,0 +1,15 @@
+{
+  "name": "Semoo Shin — HCI Researcher",
+  "short_name": "Semoo Shin",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7f9fc",
+  "theme_color": "#335fae",
+  "icons": [
+    {
+      "src": "/images/favicon/joystick.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
