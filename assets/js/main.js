@@ -1,466 +1,258 @@
-jQuery(document).ready(function($) {
+(function () {
+    'use strict';
 
-    /* ---------------------------------------------------------------------- */
-    /*	------------------------------- Loading ----------------------------- */
-    /* ---------------------------------------------------------------------- */
+    var overview = document.querySelector('[data-view-panel="overview"]');
+    var gallery = document.querySelector('[data-view-panel="gallery"]');
+    var galleryToggles = document.querySelectorAll('[data-view="gallery"]');
+    var overviewToggles = document.querySelectorAll('[data-view="overview"]');
+    var overviewLinks = document.querySelectorAll('.overview-link');
 
-    /*Page Preloading*/
-    $(window).load(function() {
-        $('#spinner').fadeOut(200);
-        $('#preloader').delay(200).fadeOut('slow');
-        $('.wrapper').fadeIn(200);
-        $('#custumize-style').fadeIn(200);
-    });
+    function setView(view, updateHash) {
+        var showGallery = view === 'gallery';
+        overview.hidden = showGallery;
+        gallery.hidden = !showGallery;
+        document.body.classList.toggle('gallery-active', showGallery);
 
-    /* ---------------------------------------------------------------------- */
-    /* ------------------------------- Taps profile ------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    $('.collapse_tabs').click(function() {
-
-        if ($(this).hasClass('collapsed')) {
-            $(this).find('i.glyphicon').removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-        } else {
-            $(this).find('i.glyphicon').removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-        }
-
-    });
-
-    /* ---------------------------------------------------------------------- */
-    /* -------------------------- easyResponsiveTabs ------------------------ */
-    /* ---------------------------------------------------------------------- */
-
-    $('#verticalTab').easyResponsiveTabs({
-        type: 'vertical',
-        width: 'auto',
-        fit: true
-    });
-
-    $("h2.resp-accordion").click(function() {
-        $(this).find(".icon_menu").addClass("icon_menu_active");
-        $("h2.resp-accordion").not(this).find(".icon_menu").removeClass("icon_menu_active");
-
-        /*	Scroll To */
-        $('html, body').animate({scrollTop: $('h2.resp-accordion').offset().top - 50}, 600);
-    });
-
-    $(".resp-tabs-list li").click(function() {
-        $(this).find(".icon_menu").addClass("icon_menu_active");
-        $(".resp-tabs-list li").not(this).find(".icon_menu").removeClass("icon_menu_active");
-    });
-
-
-    $(".resp-tabs-list li").hover(function() {
-        $(this).find(".icon_menu").addClass("icon_menu_hover");
-    }, function() {
-        $(this).find(".icon_menu").removeClass("icon_menu_hover");
-    });
-
-    $("h2.resp-accordion").hover(function() {
-        $(this).find(".icon_menu").addClass("icon_menu_hover");
-    }, function() {
-        $(this).find(".icon_menu").removeClass("icon_menu_hover");
-    });
-
-    /* ---------------------------------------------------------------------- */
-    /* --------------------------- Scroll tabs ------------------------------ */
-    /* ---------------------------------------------------------------------- */
-
-    $(".content_2").mCustomScrollbar({
-        theme: "dark-2",
-        contentTouchScroll: true,
-        advanced: {
-            updateOnContentResize: true,
-            updateOnBrowserResize: true,
-            autoScrollOnFocus: false
-        }
-    });
-
-    /* ---------------------------------------------------------------------- */
-    /* ------------------------- Effect tabs -------------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    var animation_style = 'bounceIn';
-
-    $('.dropdown-select').change(function() {
-        animation_style = $('.dropdown-select').val();
-    });
-
-
-    $('ul.resp-tabs-list li[class^=tabs-]').click(function() {
-
-        var tab_name = $(this).attr('data-tab-name');
-
-        $('.resp-tabs-container').addClass('animated ' + animation_style);
-        $('.resp-tabs-container').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $('.resp-tabs-container').removeClass('animated ' + animation_style);
+        galleryToggles.forEach(function (button) {
+            button.setAttribute('aria-selected', String(showGallery));
+            button.classList.toggle('active', showGallery);
         });
 
-        $(".content_2").mCustomScrollbar("destroy");
-        $(".content_2").mCustomScrollbar({
-            theme: "dark-2",
-            contentTouchScroll: true,
-            advanced: {
-                updateOnContentResize: true,
-                updateOnBrowserResize: true,
-                autoScrollOnFocus: false
-            }
-        });
-
-        if (tab_name == "contact")
-            initialize();
-
-        return false;
-    });
-
-    $("#verticalTab h2.resp-accordion").click(function() {
-        initialize();
-    });
-
-    /* ---------------------------------------------------------------------- */
-    /* ---------------------- redimensionnement ----------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    function redimensionnement() {
-
-        if (window.matchMedia("(max-width: 800px)").matches) {
-            $(".content_2").mCustomScrollbar("destroy");
-            $(".resp-vtabs .resp-tabs-container").css("height", "100%");
-            $(".content_2").css("height", "100%");
-        } else {
-
-            $(".resp-vtabs .resp-tabs-container").css("height", "580px");
-            $(".content_2").css("height", "580px");
-            $(".content_2").mCustomScrollbar("destroy");
-            $(".content_2").mCustomScrollbar({
-                theme: "dark-2",
-                contentTouchScroll: true,
-                advanced: {
-                    updateOnContentResize: true,
-                    updateOnBrowserResize: true,
-                    autoScrollOnFocus: false
-                }
-            });
-
+        if (updateHash) {
+            history.pushState(null, '', showGallery ? '#gallery' : '#top');
         }
 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // On lie l'événement resize à la fonction
-    window.addEventListener('load', redimensionnement, false);
-    window.addEventListener('resize', redimensionnement, false);
-
-    $("#verticalTab h2.resp-accordion").click(function() {
-        initialize();
+    galleryToggles.forEach(function (button) {
+        button.addEventListener('click', function () { setView('gallery', true); });
     });
 
-    /* ---------------------------------------------------------------------- */
-    /* -------------------------- Contact Form ------------------------------ */
-    /* ---------------------------------------------------------------------- */
+    overviewToggles.forEach(function (button) {
+        button.addEventListener('click', function () { setView('overview', true); });
+    });
 
-    // Needed variables
-    var $contactform = $('#contactform'),
-            $success = ' Your message has been sent. Thank you!';
-
-    $contactform.submit(function() {
-        $.ajax({
-            type: "POST",
-            url: "php/contact.php",
-            data: $(this).serialize(),
-            success: function(msg)
-            {
-                var msg_error = msg.split(",");
-                var output_error = '';
-
-                if (msg_error.indexOf('error-message') != -1) {
-                    $("#contact-message").addClass("has-error");
-                    $("#contact-message").removeClass("has-success");
-                    output_error = 'Please enter your message.';
-                } else {
-                    $("#contact-message").addClass("has-success");
-                    $("#contact-message").removeClass("has-error");
-                }
-
-                if (msg_error.indexOf('error-email') != -1) {
-
-                    $("#contact-email").addClass("has-error");
-                    $("#contact-email").removeClass("has-success");
-                    output_error = 'Please enter valid e-mail.';
-                } else {
-                    $("#contact-email").addClass("has-success");
-                    $("#contact-email").removeClass("has-error");
-                }
-
-                if (msg_error.indexOf('error-name') != -1) {
-                    $("#contact-name").addClass("has-error");
-                    $("#contact-name").removeClass("has-success");
-                    output_error = 'Please enter your name.';
-                } else {
-                    $("#contact-name").addClass("has-success");
-                    $("#contact-name").removeClass("has-error");
-                }
-
-
-                if (msg == 'success') {
-
-                    response = '<div class="alert alert-success success-send">' +
-                            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
-                            '<i class="glyphicon glyphicon-ok" style="margin-right: 5px;"></i> ' + $success
-                            + '</div>';
-
-
-                    $(".reset").trigger('click');
-                    $("#contact-name").removeClass("has-success");
-                    $("#contact-email").removeClass("has-success");
-                    $("#contact-message").removeClass("has-success");
-
-                } else {
-
-                    response = '<div class="alert alert-danger error-send">' +
-                            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
-                            '<i class="glyphicon glyphicon-remove" style="margin-right: 5px;"></i> ' + output_error
-                            + '</div>';
-
-                }
-                // Hide any previous response text
-                $(".error-send,.success-send").remove();
-                // Show response message
-                $contactform.prepend(response);
+    overviewLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            if (!gallery.hidden) {
+                event.preventDefault();
+                var selector = link.getAttribute('href');
+                setView('overview', false);
+                requestAnimationFrame(function () {
+                    var target = document.querySelector(selector);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    history.pushState(null, '', selector);
+                });
             }
         });
-        return false;
     });
 
-    /* ---------------------------------------------------------------------- */
-    /* ----------------------------- Portfolio ------------------------------ */
-    /* ---------------------------------------------------------------------- */
+    window.addEventListener('hashchange', function () {
+        if (window.location.hash === '#gallery') setView('gallery', false);
+        else if (!gallery.hidden) setView('overview', false);
+    });
 
+    if (window.location.hash === '#gallery') setView('gallery', false);
 
-    var filterList = {
-        init: function() {
+    var filters = document.querySelectorAll('#filters .filter');
+    var galleryItems = document.querySelectorAll('#portfoliolist > .portfolio');
 
-            // MixItUp plugin
-            // http://mixitup.io
-            $('#portfoliolist').mixitup({
-                targetSelector: '.portfolio',
-                filterSelector: '.filter',
-                effects: ['fade'],
-                easing: 'snap',
-                // call the hover effect
-                onMixEnd: filterList.hoverEffect()
+    filters.forEach(function (filter) {
+        filter.setAttribute('role', 'button');
+        filter.setAttribute('tabindex', '0');
+        function applyFilter() {
+            var categories = filter.getAttribute('data-filter').split(/\s+/);
+            var showAll = categories.length > 1;
+            filters.forEach(function (item) { item.classList.remove('active'); });
+            filter.classList.add('active');
+            galleryItems.forEach(function (item) {
+                item.hidden = !showAll && !categories.some(function (category) {
+                    return item.classList.contains(category);
+                });
             });
-
-        },
-        hoverEffect: function() {
-
-            // Simple parallax effect
-            $('#portfoliolist .portfolio').hover(
-                    function() {
-                        $(this).find('.label').stop().animate({bottom: 0}, 200);
-                        $(this).find('img').stop().animate({top: -30}, 500);
-                    },
-                    function() {
-                        $(this).find('.label').stop().animate({bottom: -40}, 200);
-                        $(this).find('img').stop().animate({top: 0}, 300);
-                    }
-            );
-
         }
-
-    };
-
-    // Run the show!
-    filterList.init();
-
-    /* ---------------------------------------------------------------------- */
-    /* ----------------------------- prettyPhoto ---------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    $("a[rel^='portfolio']").prettyPhoto({
-        animation_speed: 'fast', /* fast/slow/normal */
-        social_tools: '',
-        theme: 'pp_default',
-        horizontal_padding: 5,
-        deeplinking: false,
+        filter.addEventListener('click', applyFilter);
+        filter.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                applyFilter();
+            }
+        });
     });
 
+    var activeModal = null;
+    var modalTrigger = null;
+    var modals = document.querySelectorAll('.gallery-shell .modal');
 
+    function carouselItems(carousel) {
+        return Array.prototype.slice.call(carousel.querySelectorAll('.carousel-inner > .item'));
+    }
 
-    /* ---------------------------------------------------------------------- */
-    /* ------------------------------ Google Maps --------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    var map;
-    function initialize() {
-        map = new GMaps({
-            div: '#map',
-            lat: -37.817917,
-            lng: 144.965065,
-            zoom: 16
-
+    function showSlide(carousel, nextIndex) {
+        var items = carouselItems(carousel);
+        if (!items.length) return;
+        var index = (nextIndex + items.length) % items.length;
+        items.forEach(function (item, itemIndex) {
+            item.classList.toggle('active', itemIndex === index);
         });
-        map.addMarker({
-            lat: -37.81792,
-            lng: 144.96506,
-            title: 'Marker with InfoWindow',
-            icon: 'images/pins-map/map-marker.png',
-            infoWindow: {
-                content: '<p>Melbourne Victoria, 300, Australia</p>'
-            }
+        carousel.querySelectorAll('.carousel-indicators > li').forEach(function (indicator, indicatorIndex) {
+            indicator.classList.toggle('active', indicatorIndex === index);
         });
     }
 
-    /* ---------------------------------------------------------------------- */
-    /* --------------------------------- Blog ------------------------------- */
-    /* ---------------------------------------------------------------------- */
+    function closeModal() {
+        if (!activeModal) return;
+        activeModal.classList.remove('is-open');
+        activeModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (modalTrigger) modalTrigger.focus();
+        activeModal = null;
+        modalTrigger = null;
+    }
 
-    // More blog
-    $('a.read_m').click(function() {
-        var pagina = $(this).attr('href');
-        var postdetail = pagina + '-page';
+    function openModal(modal, trigger) {
+        if (!modal) return;
+        activeModal = modal;
+        modalTrigger = trigger;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.setAttribute('aria-modal', 'true');
+        document.body.classList.add('modal-open');
+        var carousel = modal.querySelector('.carousel');
+        if (carousel) showSlide(carousel, 0);
+        var closeButton = modal.querySelector('.gallery-modal-close');
+        if (closeButton) closeButton.focus();
+    }
 
-        if (pagina.indexOf("#post-") != -1) {
-
-            $('#blog-page').hide();
-
-            $(postdetail).show();
-            $(".tabs-blog").trigger('click');
+    modals.forEach(function (modal) {
+        modal.setAttribute('aria-hidden', 'true');
+        var content = modal.querySelector('.modal-content');
+        if (content && !content.querySelector('.gallery-modal-close')) {
+            var closeButton = document.createElement('button');
+            closeButton.type = 'button';
+            closeButton.className = 'gallery-modal-close';
+            closeButton.setAttribute('aria-label', 'Close gallery viewer');
+            closeButton.textContent = '×';
+            closeButton.addEventListener('click', closeModal);
+            content.insertBefore(closeButton, content.firstChild);
         }
-
-        return false;
-
-    });
-
-    // More blog
-    $('a.read_more').click(function() {
-        var pagina = $(this).attr('href');
-        var postdetail = pagina + '-page';
-
-        if (pagina.indexOf("#post-") != -1) {
-
-            $('#blog-page').hide();
-
-            $(postdetail).show();
-            $(".tabs-blog").trigger('click');
-        }
-
-        return false;
-
-    });
-
-    //pagination All
-    $('.content-post a').click(function() {
-        var pagina = $(this).attr('href');
-
-        if (pagina == "#blog") {
-
-            $('.content-post').hide();
-            $('#blog-page').show();
-            $(".tabs-blog").trigger('click');
-
-        }
-
-        return false;
-
-    });
-
-    //pagination blog
-    $('.content-post #pagination').click(function() {
-
-
-        var pagina = $(this).attr('href');
-        var postdetail = pagina + '-page';
-
-        if (pagina.indexOf("#post-") != -1) {
-
-            $('#blog-page').hide();
-            $('.content-post').hide();
-
-            $(postdetail).show();
-            $(".tabs-blog").trigger('click');
-        }
-
-        return false;
-
-    });
-
-
-    /* ---------------------------------------------------------------------- */
-    /* ---------------------------- icon menu ------------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    $(".resp-tabs-container h2.resp-accordion").each(function(){
-			 
-			if($(this).hasClass('resp-tab-active')){
-				$(this).append("<i class='glyphicon glyphicon-chevron-up arrow-tabs'></i>");
-			}else {
-				$(this).append("<i class='glyphicon glyphicon-chevron-down arrow-tabs'></i>");
-			}
-	  });
-	  
-	   $(".resp-tabs-container h2.resp-accordion").click(function(){
-			if($(this).hasClass('resp-tab-active')){
-				$(this).find("i.arrow-tabs").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-			}
-			
-			$(".resp-tabs-container h2.resp-accordion").each(function(){
-		 
-				if(!$(this).hasClass('resp-tab-active')){
-					$(this).find("i.arrow-tabs").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-				}
-		  });
-	  
-			
-	  });
-
-
-    /* ---------------------------------------------------------------------- */
-    /* -------------------------------- skillbar ---------------------------- */
-    /* ---------------------------------------------------------------------- */
-
-    $('.tabs-resume').click(function() {
-
-        $('.skillbar').each(function() {
-            $(this).find('.skillbar-bar').width(0);
-        });
-
-        $('.skillbar').each(function() {
-            $(this).find('.skillbar-bar').animate({
-                width: $(this).attr('data-percent')
-            }, 2000);
-        });
-
-    });
-
-    $('#resume').prev('h2.resp-accordion').click(function() {
-
-        $('.skillbar').each(function() {
-            $(this).find('.skillbar-bar').width(0);
-        });
-
-        $('.skillbar').each(function() {
-            $(this).find('.skillbar-bar').animate({
-                width: $(this).attr('data-percent')
-            }, 2000);
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) closeModal();
         });
     });
-	
-		
-	//Change for demo page
-    $('input:radio[name=page_builder]').on('change', function() {
-		
-		$('input:radio[name=page_builder]').each(function () {
 
-			var $this = $(this);
-	
-			if ($(this).prop('checked')) {
-				window.location.replace($this.val());
-			}
-		});
-		
-        return false;
+    document.querySelectorAll('.gallery-shell [data-toggle="modal"]').forEach(function (trigger) {
+        trigger.addEventListener('click', function (event) {
+            event.preventDefault();
+            openModal(document.querySelector(trigger.getAttribute('data-target')), trigger);
+        });
     });
 
+    document.querySelectorAll('.gallery-shell .carousel-control').forEach(function (control) {
+        control.addEventListener('click', function (event) {
+            event.preventDefault();
+            var carousel = control.closest('.carousel');
+            var items = carouselItems(carousel);
+            var currentIndex = items.findIndex(function (item) { return item.classList.contains('active'); });
+            showSlide(carousel, currentIndex + (control.getAttribute('data-slide') === 'prev' ? -1 : 1));
+        });
+    });
 
+    document.querySelectorAll('.gallery-shell .carousel-indicators > li').forEach(function (indicator) {
+        indicator.addEventListener('click', function () {
+            var carousel = indicator.closest('.carousel');
+            showSlide(carousel, Number(indicator.getAttribute('data-slide-to')) || 0);
+        });
+    });
 
-});
+    document.addEventListener('keydown', function (event) {
+        if (!activeModal) return;
+        if (event.key === 'Escape') closeModal();
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            var carousel = activeModal.querySelector('.carousel');
+            var items = carouselItems(carousel);
+            var currentIndex = items.findIndex(function (item) { return item.classList.contains('active'); });
+            showSlide(carousel, currentIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+        }
+    });
+
+    var year = document.getElementById('current-year');
+    if (year) year.textContent = String(new Date().getFullYear());
+
+    var joystick = document.getElementById('joystick');
+    if (!joystick) return;
+
+    var layers = {};
+    joystick.querySelectorAll('[data-direction]').forEach(function (layer) {
+        layers[layer.getAttribute('data-direction')] = layer;
+        layer.style.opacity = layer.getAttribute('data-direction') === 'front' ? '1' : '0';
+    });
+
+    var directions = ['right', 'down-right', 'down', 'down-left', 'left', 'up-left', 'up', 'up-right'];
+    var target = { x: 0, y: 0 };
+    var current = { x: 0, y: 0 };
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function clampVector(x, y) {
+        var length = Math.hypot(x, y);
+        if (length > 1) return { x: x / length, y: y / length };
+        return { x: x, y: y };
+    }
+
+    function pointJoystick(clientX, clientY) {
+        var rect = joystick.getBoundingClientRect();
+        var centerX = rect.left + rect.width / 2;
+        var centerY = rect.top + rect.height / 2;
+        var range = Math.max(240, Math.min(window.innerWidth, window.innerHeight) * 0.42);
+        target = clampVector((clientX - centerX) / range, (clientY - centerY) / range);
+    }
+
+    window.addEventListener('pointermove', function (event) {
+        if (event.pointerType !== 'touch') pointJoystick(event.clientX, event.clientY);
+    }, { passive: true });
+
+    joystick.addEventListener('pointermove', function (event) {
+        if (event.pointerType === 'touch') pointJoystick(event.clientX, event.clientY);
+    }, { passive: true });
+
+    joystick.addEventListener('keydown', function (event) {
+        var step = 0.24;
+        if (event.key === 'ArrowLeft') target.x -= step;
+        else if (event.key === 'ArrowRight') target.x += step;
+        else if (event.key === 'ArrowUp') target.y -= step;
+        else if (event.key === 'ArrowDown') target.y += step;
+        else if (event.key === 'Home' || event.key === 'Escape') target = { x: 0, y: 0 };
+        else return;
+        event.preventDefault();
+        target = clampVector(target.x, target.y);
+    });
+
+    function renderJoystick() {
+        var easing = reducedMotion ? 1 : 0.11;
+        current.x += (target.x - current.x) * easing;
+        current.y += (target.y - current.y) * easing;
+
+        var magnitude = Math.min(1, Math.hypot(current.x, current.y));
+        var angle = Math.atan2(current.y, current.x) * 180 / Math.PI;
+        if (angle < 0) angle += 360;
+        var sector = angle / 45;
+        var firstIndex = Math.floor(sector) % 8;
+        var secondIndex = (firstIndex + 1) % 8;
+        var blend = sector - Math.floor(sector);
+
+        directions.forEach(function (name) { layers[name].style.opacity = '0'; });
+        layers.front.style.opacity = String(1 - magnitude * 0.94);
+        layers[directions[firstIndex]].style.opacity = String(magnitude * (1 - blend));
+        layers[directions[secondIndex]].style.opacity = String(magnitude * blend);
+
+        joystick.style.setProperty('--joystick-x', (current.x * 5).toFixed(2) + 'px');
+        joystick.style.setProperty('--joystick-y', (current.y * 5).toFixed(2) + 'px');
+        joystick.style.setProperty('--joystick-rotate-x', (-current.y * 3).toFixed(2) + 'deg');
+        joystick.style.setProperty('--joystick-rotate-y', (current.x * 3).toFixed(2) + 'deg');
+
+        requestAnimationFrame(renderJoystick);
+    }
+
+    requestAnimationFrame(renderJoystick);
+}());
