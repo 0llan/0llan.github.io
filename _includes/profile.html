@@ -1,32 +1,13 @@
-<section class="section shell about-section" id="about">
-    <div class="section-heading">
-        <p class="section-kicker">About</p>
-        <h2>Research through making.</h2>
-    </div>
-
-    <div class="about-grid">
-        <div class="about-copy">
-            <p class="lead-copy">
-                I work at the intersection of human–computer interaction, haptics, and robotics,
-                with a particular interest in experiences that connect physical sensation to virtual environments.
-            </p>
-            <p>
-                At the Human-Centered Intelligent Systems (HCIS) Lab of Gwangju Institute of Science and
-                Technology (GIST), advised by Professor SeungJun Kim, I have contributed to research on
-                biomechanical electrical muscle stimulation, ear-pressure feedback, magnetic haptics,
-                wearable inertia rendering, and human–drone interaction.
-            </p>
-            <div class="research-tags" aria-label="Research interests">
-                <span>Haptic Interaction</span>
-                <span>Virtual Reality</span>
-                <span>Human–Drone Interaction</span>
-                <span>Prototyping</span>
-            </div>
-        </div>
-
-        <figure class="about-figure">
-            <img src="images/img-profile/about_1.png" alt="Semoo Shin observing a flying drone outdoors" loading="lazy">
-            <figcaption>Experimenting with human–drone interaction in the field.</figcaption>
-        </figure>
-    </div>
-</section>
+<figure class="about-figure" data-about-slideshow role="region" aria-roledescription="carousel" aria-label="Profile photos">
+    <a class="about-slides" href="images/img-profile/about_1.png" aria-label="Enlarge current profile photo" aria-haspopup="dialog">
+        <img class="about-slide is-active" src="images/img-profile/about_1.png" alt="Semoo Shin flying a helicopter outdoors" loading="lazy" decoding="async">
+        <img class="about-slide" src="images/img-profile/about_2.jpg" alt="Semoo Shin beneath cherry blossoms on the GIST campus" loading="lazy" decoding="async" aria-hidden="true">
+        <img class="about-slide" src="images/img-profile/about_3.png" alt="Semoo Shin on a city street at night" loading="lazy" decoding="async" aria-hidden="true">
+    </a>
+    <dialog class="about-lightbox" aria-label="Profile photo viewer">
+        <button class="about-lightbox-close" type="button" aria-label="Close photo viewer" autofocus>×</button>
+        <button class="about-lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+        <img class="about-lightbox-image" alt="">
+        <button class="about-lightbox-next" type="button" aria-label="Next photo">›</button>
+    </dialog>
+</figure>

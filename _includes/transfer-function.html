@@ -1,0 +1,39 @@
+<section class="tf-demo shell" id="tf-demo" aria-labelledby="tf-title">
+    <div class="tf-header">
+        <h2 class="tf-heading" id="tf-title">Try flying a drone.</h2>
+        <div class="tf-toolbar">
+            <div class="tf-modes" role="group" aria-label="Drone flight mode">
+                <button type="button" data-tf-mode="loiter" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>Loiter</button>
+                <button type="button" data-tf-mode="angle" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18 18 5M11 18a6 6 0 0 0-2-4"/></svg>Angle</button>
+                <button type="button" data-tf-mode="manual" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M8 20v-4h8v4M12 16V8"/><circle cx="12" cy="5" r="3"/></svg>Manual</button>
+            </div>
+            <button type="button" class="tf-reset">Reset</button>
+        </div>
+    </div>
+    <div class="tf-experiment">
+        <div class="tf-stage">
+            <canvas class="tf-canvas" role="img" aria-label="Rear-view drone flight over a scrolling landscape. Use the joystick for throttle and roll. Flight measurements appear below.">Your browser needs canvas support to show this demo.</canvas>
+            <div class="tf-hud" aria-hidden="true"><span>FREE FLIGHT</span><span>THROTTLE + ROLL</span></div>
+            <p class="tf-flight-status" role="status" hidden></p>
+            <p class="tf-environment-status" role="status" hidden></p>
+        </div>
+        <div class="tf-telemetry" aria-label="Flight measurements">
+            <span>ALT <output class="tf-altitude">9.0 m</output></span>
+            <span>ROLL <output class="tf-roll">0°</output></span>
+            <span>MOTOR <output class="tf-thrust">49%</output></span>
+            <span>SPEED <output class="tf-speed">0.0 m/s</output></span>
+            <span>DIST <output class="tf-distance">0 m</output></span>
+        </div>
+        <p class="tf-description" aria-live="polite">Loiter · Release to brake, level out, and hold position &amp; altitude.</p>
+        <p class="tf-world-help">Fly right → Stay below tunnel ceilings and the 150 m flight limit. Tunnel mountains are solid; buildings simulate GPS shadows only. GPS recovers above rooftops.</p>
+    </div>
+    <div class="tf-controller">
+        <div class="tf-stick" tabindex="0" role="group" aria-label="Drone joystick: vertical throttle, horizontal roll" aria-describedby="tf-stick-help">
+            <span class="tf-stick-axis tf-stick-axis-x" aria-hidden="true"></span>
+            <span class="tf-stick-axis tf-stick-axis-y" aria-hidden="true"></span>
+            <span class="tf-stick-knob" aria-hidden="true"></span>
+        </div>
+        <p id="tf-stick-help">↕ Throttle · ↔ Roll<br>Hold &amp; drag · Release to center<br>Drag further for full input<br>Keyboard: hold arrow keys</p>
+        <output class="tf-input" aria-label="Joystick input">THR +0% · ROLL +0%</output>
+    </div>
+</section>

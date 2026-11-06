@@ -19,14 +19,16 @@ layout: default
 </header>
 
 <main id="overview-view" class="view-panel" data-view-panel="overview">
-    <section class="hero shell" id="top">
-        <div class="hero-copy">
-            <p class="eyebrow">Human–Computer Interaction · Haptics · Robotics</p>
-            <h1>Building interfaces that make digital experiences feel physical.</h1>
+    <section class="hero shell" id="about" aria-labelledby="about-title">
+        <div class="hero-copy" id="top">
+            <p class="about-label">About</p>
+            <h1 id="about-title">Building interfaces that turn digital data into physical experiences.</h1>
             <p class="hero-lede">
                 I am Semoo Shin, an HCI researcher at the Human-Centered Intelligent Systems Lab, GIST.
                 My work explores haptic interaction, immersive systems, and human–drone interfaces.
             </p>
+
+            <p class="eyebrow hero-interests">Human–Computer Interaction · Haptics · Robotics</p>
 
             <div class="profile-links" aria-label="Academic and social profiles">
                 <a href="https://scholar.google.com/citations?user=w5b-UFcAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
@@ -35,49 +37,21 @@ layout: default
             </div>
         </div>
 
-        <aside class="joystick-card" aria-label="Interactive joystick portrait">
-            <div class="joystick-frame" id="joystick" tabindex="0" role="img" aria-label="An interactive joystick that follows the pointer smoothly. Use the arrow keys to move it.">
-                <img class="joystick-layer" data-direction="front" src="images/img/front.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="up" src="images/img/up.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="up-right" src="images/img/upright.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="right" src="images/img/right.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="down-right" src="images/img/downright.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="down" src="images/img/down.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="down-left" src="images/img/downleft.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="left" src="images/img/left.png" alt="" aria-hidden="true">
-                <img class="joystick-layer" data-direction="up-left" src="images/img/upleft.png" alt="" aria-hidden="true">
-            </div>
-            <p class="joystick-caption"><span class="status-dot" aria-hidden="true"></span> Move your pointer — or use arrow keys</p>
-        </aside>
+        {% include profile.html %}
     </section>
 
-    {% include profile.html %}
     {% include publication.html %}
+    <div class="research-demo-band">
+        {% include transfer-function.html %}
+    </div>
     {% include cv.html %}
-
-    <section class="section shell connect-section" id="connect">
-        <div>
-            <p class="section-kicker">Connect</p>
-            <h2>Continue the conversation elsewhere.</h2>
-        </div>
-        <p>
-            This site does not collect names, email addresses, messages, or other visitor information.
-            For academic inquiries, please use the verified profiles linked below.
-        </p>
-        <div class="connect-links">
-            <a href="https://sites.google.com/view/gist-hcis-lab/people" target="_blank" rel="noopener noreferrer">HCIS Lab</a>
-            <a href="https://dblp.org/pid/402/9019" target="_blank" rel="noopener noreferrer">DBLP</a>
-            <a href="https://scholar.gist.ac.kr/browse?etal=3&amp;order=ASC&amp;rpp=60&amp;sort_by=1&amp;starts_with=H&amp;type=author&amp;value=Shin%2C+Semoo" target="_blank" rel="noopener noreferrer">GIST Scholar</a>
-        </div>
-    </section>
 </main>
 
 <main id="gallery-view" class="view-panel gallery-view" data-view-panel="gallery" hidden>
     <div class="shell gallery-heading">
         <div>
             <p class="section-kicker">Gallery</p>
-            <h1>Projects, prototypes, and field notes.</h1>
-            <p>A visual archive of things I have built, tested, and explored.</p>
+            <h1>Projects, prototypes, and more.</h1>
         </div>
         <button class="back-overview" type="button" data-view="overview">← Back to overview</button>
     </div>
@@ -89,6 +63,6 @@ layout: default
 <footer class="site-footer">
     <div class="shell footer-inner">
         <p>© <span id="current-year">2026</span> Semoo Shin</p>
-        <p>Built as a privacy-respecting, static site. No forms. No tracking.</p>
+        <p>This static site has no forms or analytics and does not collect names, email addresses, messages, or other personal submissions. For academic inquiries, please use the verified profiles linked on this site.</p>
     </div>
 </footer>

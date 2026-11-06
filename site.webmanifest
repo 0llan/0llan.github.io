@@ -7,7 +7,7 @@
   "theme_color": "#335fae",
   "icons": [
     {
-      "src": "/images/favicon/joystick.ico",
+      "src": "images/favicon/joystick.ico?v=20261104",
       "sizes": "any",
       "type": "image/x-icon"
     }
